@@ -1,0 +1,5 @@
+# config/config.yaml
+response_key: 'response'
+error_key: 'error'
+id_key: 'id'
+prompt_key: 'prompt'

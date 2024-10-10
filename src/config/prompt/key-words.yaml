@@ -1,0 +1,7 @@
+prompt_format: 
+  - |
+    请根据提供的图片尝试回答下面的单选题。请使用以下格式：“答案：$LETTER”，其中$LETTER是你认为正确答案的字母。
+    
+    关键词：{key_words}
+    {question}
+    答案:
