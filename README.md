@@ -20,7 +20,7 @@ To obtain the model's score on CII-Bench, we need to first infer the model's pre
 
 ### 1. Inference
 
-Before inference, you need to correctly configure the inference framework and code required for the model. Below, we provide running examples for different inference frameworks.
+Before inference, you need to configure the inference framework and code required for the model correctly. Below, we provide running examples for different inference frameworks.
 
 #### Using lmdeploy for inference
 
@@ -32,7 +32,7 @@ conda activate lmdeploy
 pip install lmdeploy
 ```
 
-Then, you need to configure the model's inference configs in `src/infer/models/__init__.py`. Taking InternVL2-8B as an example, we pass `('.lmdeploy_chat', 'load_model')` and `('.lmdeploy_chat', 'infer')` to the `load` and `infer` fields respectively, indicating that the program will execute `load` and `infer` in `src/infer/models/lmdeploy_chat` to load the model and perform inference.
+Then, you need to configure the model configs in `src/infer/models/__init__.py`. Taking InternVL2-8B as an example, we pass `('.lmdeploy_chat', 'load_model')` and `('.lmdeploy_chat', 'infer')` to the `load` and `infer` fields respectively, indicating that the program will execute `load` and `infer` in `src/infer/models/lmdeploy_chat` to load the model and perform inference.
 If your model is stored locally, pass the model path to the `model_path_or_name` parameter and set `call_type` to `local`. Set `tp` according to your tensor parallelism requirements.
 
 ```python
@@ -58,7 +58,7 @@ python infer/infer.py --config config/config_cii.yaml --split CII --mode none --
 `--output_dir`: Prediction output directory.
 `--batch_size`: Inference batch size.
 
-Similarly, you can use lmdeploy via API server.
+Similarly, you can use lmdeploy via the API server.
 Launch the API service:
 
 ```shell
@@ -93,7 +93,7 @@ First, configure the environment required for vLLM [link](https://github.com/vll
 pip install vllm 
 ```
 
-We recommend using the API service form to call the model
+We recommend using the API service to call the model
 
 ```shell
 vllm serve Qwen/Qwen2-VL-7B-Instruct --max-model-len 20000 --trust-remote-code --limit-mm-per-prompt image=4 --gpu-memory-utilization 0.9 --tensor-parallel-size 4 --port 8000
@@ -112,7 +112,7 @@ Configure the model configuration
     }
 ```
 
-Then execute inference
+Then run inference
 
 ```shell
 python infer/infer.py --config config/config_cii.yaml --split CII --mode none --model_name Qwen2-VL-7B --output_dir results_cii --num_workers 16
@@ -120,7 +120,7 @@ python infer/infer.py --config config/config_cii.yaml --split CII --mode none --
 
 #### Custom Model
 
-For models that don't support acceleration frameworks, you can manually add model inference files in the `src/infer/models` directory, such as `Idefics2`. After modifying the inference file and completing the model configuration, execute the following script to run inference.
+For models that are not supported by inference frameworks, you can manually add model inference files in the `src/infer/models` directory, such as `idefics2.py`. After adding the inference code and modifying the model configs, execute the following script to run inference.
 
 ```shell
 python infer/infer.py --config config/config_cii.yaml --split CII --mode none --model_name idefics2-8b --output_dir results_cii --batch_size 4
@@ -128,7 +128,7 @@ python infer/infer.py --config config/config_cii.yaml --split CII --mode none --
 
 ### 2. Calculate Scores
 
-Once the inference results are saved, directly execute `eval_cii.py` and `eval_cii_sub.py` in the src directory.
+Once the inference results are saved, directly execute `eval_cii.py` and `eval_cii_sub.py` in the src/ directory.
 
 ```shell
 python eval_cii.py --evaluate_all --output_dir "results_cii" --save_dir "results_cii_with_status"
