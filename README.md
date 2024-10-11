@@ -1,7 +1,7 @@
 
-# <img src="assets/logo.png" alt="logo" style="width: 8%;" />CII-Bench  
+# <img src="assets/logo.png" alt="logo" style="width: 8%;" />Can MLLMs Understand the Deep Implication Behind Chinese Images?
 
-**Can MLLMs Understand the Deep Implication Behind Chinese Images?**
+<!-- **Can MLLMs Understand the Deep Implication Behind Chinese Images?** -->
 
 <p align="center">
 <a href="https://cii-bench.github.io/"><img src="https://img.shields.io/badge/Homepage-blue" alt="Homepage"></a>
@@ -25,6 +25,19 @@ We believe that CII-Bench will enable MLLMs to gain a better understanding of Ch
 
 <!-- ## 🏆 Mini-Leaderboard -->
 
+## CII-Bench
+
+We introduce the **C**hinese **I**mage **I**mplication Understanding **Bench**mark **CII-Bench**, a new benchmark measuring the higher-order perceptual, reasoning and comprehension abilities of MLLMs when presented with complex Chinese implication images. These images, including abstract artworks, comics and posters, possess visual implications that require an understanding of visual details and reasoning ability. CII-Bench reveals whether current MLLMs, leveraging their inherent comprehension abilities, can accurately decode the metaphors embedded within the complex and abstract information presented in these images.
+
+<p align="center">
+  <img src="assets/CII-Bench-sample.png" alt="CII-Bench-sample" style="width: 90%;" />
+</p>
+
+CII-Bench contains a total of **698** various Chinese images. These images are manually collected and annotated by 30 undergraduate students from various disciplines and institutions, with sources from multiple renowned Chinese illustration websites. Each image is manually designed with one to three multiple-choice questions, each with six options and only one correct answer. The questions cover the metaphors, symbolism, and detailed understanding of the images. The benchmark includes a total of **800** multiple-choice questions, with **765** questions used to construct the test set and 35 questions used to construct the development and validation set for few-shot tasks.
+
+<p align="center">
+  <img src="assets/CII-Bench-type.png" alt="CII-Bench-type" style="width: 90%;" />
+</p>
 
 ## Evaluation
 
