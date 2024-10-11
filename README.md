@@ -32,7 +32,7 @@ conda activate lmdeploy
 pip install lmdeploy
 ```
 
-Then, you need to configure the model configs in `src/infer/models/__init__.py`. Taking InternVL2-8B as an example, we pass `('.lmdeploy_chat', 'load_model')` and `('.lmdeploy_chat', 'infer')` to the `load` and `infer` fields respectively, indicating that the program will execute `load` and `infer` in `src/infer/models/lmdeploy_chat` to load the model and perform inference.
+Then, you need to configure the model configs in `src/infer/models/__init__.py`. Taking **InternVL2-8B** as an example, we pass `('.lmdeploy_chat', 'load_model')` and `('.lmdeploy_chat', 'infer')` to the `load` and `infer` fields respectively, indicating that the program will execute `load` and `infer` in `src/infer/models/lmdeploy_chat` to load the model and perform inference.
 If your model is stored locally, pass the model path to the `model_path_or_name` parameter and set `call_type` to `local`. Set `tp` according to your tensor parallelism requirements.
 
 ```python
@@ -45,35 +45,36 @@ If your model is stored locally, pass the model path to the `model_path_or_name`
     }
 ```
 
-Run inference
+Run inference:
 
 ```shell
-python infer/infer.py --config config/config_cii.yaml --split CII --mode none --model_name idefics2-8b --output_dir results_cii --batch_size 4
+python infer/infer.py --config config/config_cii.yaml --split CII --mode none --model_name InternVL2-8B --output_dir results_cii --batch_size 4
 ```
 
-`--config`: File field configuration
-`--split`: Data split to run. When set to CII, it will infer both test and dev sets by default. You can modify the corresponding code in `infer.py` to run different splits.
-`--mode`: Experiment setting. Default 'none' for zero-shot prediction. Options include `none cot domain emotion rhetoric`.
-`--model_name`: Model name configured in `src/infer/models/__init__.py`.
-`--output_dir`: Prediction output directory.
-`--batch_size`: Inference batch size.
+`--config`: File field configuration \
+`--split`: Data split to run. When set to CII, it will infer both test and dev sets by default. You can modify the corresponding code in `infer.py` to run different splits. \
+`--mode`: Experiment setting. Default 'none' for zero-shot prediction. Options include `none cot domain emotion rhetoric`. \
+`--model_name`: Model name configured in `src/infer/models/__init__.py`. \
+`--output_dir`: Prediction output directory. \
+`--batch_size`: Inference batch size. 
 
 Similarly, you can use lmdeploy via the API server.
+
 Launch the API service:
 
 ```shell
-lmdeploy serve api_server OpenGVLab/InternVL2-40B --tp 4 --cache-max-entry-count 0.90 --backend turbomind --server-port 23333 --max-batch-size 1
+lmdeploy serve api_server OpenGVLab/InternVL2-8B --tp 4 --cache-max-entry-count 0.90 --backend turbomind --server-port 23333 --max-batch-size 1
 ```
 
 Modify the model configuration to:
 
 ```python
-'InternVL2-40B': {
+'InternVL2-8B': {
         'load': ('.api', 'load_model'),
         'infer': ('.api', 'infer'),
         'base_url': 'http://localhost:23333/v1',
         'api_key': 'YOUR_API_KEY',
-        'model': 'OpenGVLab/InternVL2-40B',
+        'model': 'OpenGVLab/InternVL2-8B',
         'call_type': 'api'
     }
 ```
@@ -81,8 +82,10 @@ And pass in the correct base_url, api_key, and model.
 
 Now replace `--batch_size` with `--num_workers`, and assign the number of concurrent workers for inference.
 
+Run inference:
+
 ```shell
-python infer/infer.py --config config/config_cii.yaml --split CII --mode none --model_name idefics2-8b --output_dir results_cii --num_workers 4
+python infer/infer.py --config config/config_cii.yaml --split CII --mode none --model_name InternVL2-8B --output_dir results_cii --num_workers 4
 ```
 
 #### vLLM
@@ -93,13 +96,15 @@ First, configure the environment required for vLLM [link](https://github.com/vll
 pip install vllm 
 ```
 
-We recommend using the API service to call the model
+We recommend using the API service to call the model. Here we take **Qwen2-VL-7B** as an example.
+
+Launch the API service:
 
 ```shell
 vllm serve Qwen/Qwen2-VL-7B-Instruct --max-model-len 20000 --trust-remote-code --limit-mm-per-prompt image=4 --gpu-memory-utilization 0.9 --tensor-parallel-size 4 --port 8000
 ```
 
-Configure the model configuration
+Modify the model configuration to:
 
 ```python
 'Qwen2-VL-7B': {
@@ -112,7 +117,7 @@ Configure the model configuration
     }
 ```
 
-Then run inference
+Run inference:
 
 ```shell
 python infer/infer.py --config config/config_cii.yaml --split CII --mode none --model_name Qwen2-VL-7B --output_dir results_cii --num_workers 16
@@ -121,6 +126,8 @@ python infer/infer.py --config config/config_cii.yaml --split CII --mode none --
 #### Custom Model
 
 For models that are not supported by inference frameworks, you can manually add model inference files in the `src/infer/models` directory, such as `idefics2.py`. After adding the inference code and modifying the model configs, execute the following script to run inference.
+
+Run inference:
 
 ```shell
 python infer/infer.py --config config/config_cii.yaml --split CII --mode none --model_name idefics2-8b --output_dir results_cii --batch_size 4
