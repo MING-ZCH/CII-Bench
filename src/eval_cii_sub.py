@@ -16,8 +16,6 @@ emotion_map = {"积极":"Positive",
                "消极":"Negative",
                "中性":"Neutral"}
 
-
-
 rhetoric_map={"隐喻":"Metaphor",
               "夸张":"Exaggeration",
               "象征":"Symbol",
@@ -28,12 +26,8 @@ rhetoric_map={"隐喻":"Metaphor",
               "对立":"Opposition",
               "其他":"Other"}
 
-# type_mape = 
-
-# , "积极", "消极", "中性", "隐喻","夸张","象征","对比","视觉错位","拟人","类比","对立","其他"
 def evaluate_domain(output_dir):
     results = PrettyTable()
-    # results.field_names = ["Model", "Split", "Mode", "Accuracy", "Errors", "Miss"]
     results.field_names = ["Model", "Mode", "Overall", "生活", "艺术", "社会", "政治", "环境", "中国传统文化"]
     
     domain_list = ["生活", "艺术", "社会", "政治", "环境", "中华传统文化"]
@@ -60,28 +54,6 @@ def evaluate_domain(output_dir):
                         overall.append(1)
                     else:
                         overall.append(0)
-                    # if data["emotion"] not in score_dict:
-                    #     score_dict[data["emotion"]] = []
-                    # if data["status"] == "correct":
-                    #     score_dict[data["emotion"]].append(1)
-                    # else:
-                    #     score_dict[data["emotion"]].append(0)
-                    # # print(data["rhetoric"])
-                    # if isinstance(data["rhetoric"], dict):
-                    #     for r in data["rhetoric"]["choices"]:
-                    #         if r not in score_dict:
-                    #             score_dict[r] = []
-                    #         if data["status"] == "correct":
-                    #             score_dict[r].append(1)
-                    #         else:
-                    #             score_dict[r].append(0)
-                    # elif isinstance(data["rhetoric"], str):
-                    #     if data["rhetoric"] not in score_dict:
-                    #         score_dict[data["rhetoric"]] = []
-                    #     if data["status"] == "correct":
-                    #         score_dict[data["rhetoric"]].append(1)
-                    #     else:
-                    #         score_dict[data["rhetoric"]].append(0)
             
             for key in score_dict:
                 score_dict[key] = sum(score_dict[key])/len(score_dict[key])
@@ -228,7 +200,6 @@ def evaluate_image_type(output_dir):
             results.add_row([model_name, mode, f"{overall_acc:.2%}"]+ [f"{score_dict[k]:.2%}" for k in ["插画(Illustration)", "绘画(Painting)", "海报(Poster)", "单格漫画(Single-panel Comic)", "多格漫画(Multi-panel Comic)","梗图(Meme)"]])
     print(results)
     return results.get_string()
-
 
 def evaluate_difficulty(output_dir):
     results = PrettyTable()
