@@ -27,7 +27,6 @@ def extract_option_labels(text, options=None):
         for char in ["A", "B", "C", "D", "E", "F", "G", "H"]:
             if char in text:
                 return char
-    # if 
     
     if isinstance(text, dict):
         return 'error'
