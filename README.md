@@ -7,10 +7,13 @@
 <a href="https://cii-bench.github.io/"><img src="https://img.shields.io/badge/Homepage-blue" alt="Homepage"></a>
 <a href="https://github.com/MING-ZCH/CII-Bench"><img src="https://img.shields.io/badge/Code-24292e" alt="Code"></a>
 <a href="https://huggingface.co/datasets/m-a-p/II-Bench"><img src="https://img.shields.io/badge/Dataset-yellow" alt="Dataset"></a>
+<a href="https://arxiv.org/abs/2410.13854 "><img src="https://img.shields.io/badge/Paper-red" alt="Paper"></a>
 </p> 
 
-<!-- ## 🔥News -->
-<!-- - [Oct. 2024]: Our paper has released on arXiv, check it out! -->
+## 🔥News
+
+- [Oct. 2024]: Our paper has released on [arXiv](https://arxiv.org/abs/2410.13854), check it out!
+  
 ## Introduction
 As the capabilities of Multimodal Large Language Models (MLLMs) continue to improve, the need for higher-order capability evaluation of MLLMs is increasing. However, there is a lack of work evaluating MLLM for higher-order perception and understanding of Chinese visual content.
 To fill the gap, we introduce the **C**hinese **I**mage **I**mplication understanding **Bench**mark, **CII-Bench**, which aims to assess the higher-order perception and understanding capabilities of MLLMs for Chinese images. 
@@ -181,3 +184,14 @@ We choose to deeply analyze MLLM’s understanding of Chinese traditional cultur
 ## Citation
 
 If you find our work helpful in your research, please cite the following paper:
+```bibtex
+@misc{zhang2024mllmsunderstanddeepimplication,
+      title={Can MLLMs Understand the Deep Implication Behind Chinese Images?}, 
+      author={Chenhao Zhang and Xi Feng and Yuelin Bai and Xinrun Du and Jinchang Hou and Kaixin Deng and Guangzeng Han and Qinrui Li and Bingli Wang and Jiaheng Liu and Xingwei Qu and Yifei Zhang and Qixuan Zhao and Yiming Liang and Ziqiang Liu and Feiteng Fang and Min Yang and Wenhao Huang and Chenghua Lin and Ge Zhang and Shiwen Ni},
+      year={2024},
+      eprint={2410.13854},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2410.13854}, 
+}
+```
