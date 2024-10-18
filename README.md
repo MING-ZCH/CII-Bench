@@ -6,7 +6,7 @@
 <p align="center">
 <a href="https://cii-bench.github.io/"><img src="https://img.shields.io/badge/Homepage-blue" alt="Homepage"></a>
 <a href="https://github.com/MING-ZCH/CII-Bench"><img src="https://img.shields.io/badge/Code-24292e" alt="Code"></a>
-<a href="https://huggingface.co/datasets/m-a-p/II-Bench"><img src="https://img.shields.io/badge/Dataset-yellow" alt="Dataset"></a>
+<a href="https://huggingface.co/datasets/m-a-p/CII-Bench"><img src="https://img.shields.io/badge/Dataset-yellow" alt="Dataset"></a>
 <a href="https://arxiv.org/abs/2410.13854 "><img src="https://img.shields.io/badge/Paper-red" alt="Paper"></a>
 </p> 
 
