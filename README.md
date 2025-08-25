@@ -186,10 +186,10 @@ We choose to deeply analyze MLLM’s understanding of Chinese traditional cultur
 
 If you find our work helpful in your research, please cite the following paper:
 ```bibtex
-@article{zhang2024ciibench,
-      title={Can MLLMs Understand the Deep Implication Behind Chinese Images?}, 
-      author={Chenhao Zhang and Xi Feng and Yuelin Bai and Xinrun Du and Jinchang Hou and Kaixin Deng and Guangzeng Han and Qinrui Li and Bingli Wang and Jiaheng Liu and Xingwei Qu and Yifei Zhang and Qixuan Zhao and Yiming Liang and Ziqiang Liu and Feiteng Fang and Min Yang and Wenhao Huang and Chenghua Lin and Ge Zhang and Shiwen Ni},
-      journal={arXiv preprint arXiv:2410.13854},
-      year={2024}
+@inproceedings{zhang2025ciibench,
+  title={Can MLLMs Understand the Deep Implication Behind Chinese Images?},
+  author={Chenhao Zhang and Xi Feng and Yuelin Bai and Xeron Du and Jinchang Hou and Kaixin Deng and Guangzeng Han and Qinrui Li and Bingli Wang and Jiaheng Liu and Xingwei Qu and Yifei Zhang and Qixuan Zhao and Yiming Liang and Ziqiang Liu and Feiteng Fang and Min Yang and Wenhao Huang and Chenghua Lin and Ge Zhang and Shiwen Ni},
+  booktitle={ACL},
+  year={2025}
 }
 ```
